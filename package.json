@@ -1,0 +1,25 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "social network api",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codemodeactivate/social-network-api.git"
+  },
+  "author": "Jeff Zenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codemodeactivate/social-network-api/issues"
+  },
+  "homepage": "https://github.com/codemodeactivate/social-network-api#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "mongoose": "^7.3.1"
+  }
+}

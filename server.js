@@ -14,7 +14,7 @@ app.use(express.json());
 app.use('/api', routes);
 
 
-
+db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
     app.listen(PORT, () => {
       console.log(`Server Running on Port ${PORT}! Bang!!!!`);

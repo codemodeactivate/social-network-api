@@ -2,13 +2,14 @@ const User = require('../models/User');
 
 const userController = {
 
-    getAllUsers(req, res) {
-        User.find({})
-        .then(dbUserData => res.json(dbUserData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    getAllUsers: async (req, res) => {
+        try {
+            const dbUserData = await User.find({});
+            res.json(dbUserData);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'An error occurred while trying to get all users' });
+        }
     }
 }
 

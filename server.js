@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use('/api', routes);
+app.use(routes);
 
 
 db.on('error', console.error.bind(console, 'connection error:'));

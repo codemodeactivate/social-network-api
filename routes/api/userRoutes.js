@@ -11,9 +11,9 @@ const {
 } = require('../../controllers/user-controller');
 
 
-// router
-//     .route('/')
-//     .get(getAllUsers)
+ router
+     .route('/')
+     .get(getAllUsers)
 //     .post(createUser);
 
 // router

@@ -17,10 +17,10 @@ const {
      .post(createUser);
 
  router
-     .route('/:id')
-     .get(getUserById)
-//     .put(updateUser)
-//     .delete(deleteUser);
+    .route('/:id')
+    .get(getUserById)
+    .put(updateUser)
+    .delete(deleteUser);
 
 
 // router

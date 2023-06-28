@@ -19,6 +19,13 @@
   [![Demo Video](/assets/img/preview.png)](#)
   ## Installation
   Once the repo is cloned, type NPM install to install all dependencies.
+
+  ```
+    npm install - to install all dependencies
+    npm run seed - to seed the database
+    npm run start - to start the server
+
+```
   ## Usage
   Have fun! Maybe create the new Facebook, why not?
   ## Contribute

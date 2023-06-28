@@ -14,12 +14,12 @@ const {
 router
     .route('/')
     .get(getAllThoughts)
-//     .post(createThought);
+    .post(createThought);
 
-// router
-//     .route('/:id')
+router
+     .route('/:id')
 //     .get(getThoughtById)
-//     .put(updateThought)
+    .put(updateThought)
 //     .delete(deleteThought);
 
 

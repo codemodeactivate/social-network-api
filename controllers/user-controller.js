@@ -82,8 +82,7 @@ const userController = {
         try {
 
             const dbUserData = await User.findById(req.params.id);
-            // console.log('User ID:', req.params.id);
-            // console.log('Friend ID:', req.params.friendId);
+
             if (!dbUserData) {
                 res.status(404).json({ message: 'No user found with this id!' });
                 return;
@@ -118,11 +117,6 @@ const userController = {
 };
 
 
-
-// router
-//     .route('/:userId/friends/:friendId')
-//     .post(addFriend)
-//     .delete(removeFriend);
 
 
 

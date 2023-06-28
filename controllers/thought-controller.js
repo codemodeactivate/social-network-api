@@ -87,6 +87,44 @@ const userController = {
 
         },
 
+        addReaction: async (req, res) => {
+            try {
+                const { reactionBody, username } = req.body;
+
+                const updatedThought = await Thought.findByIdAndUpdate(
+                    req.params.thoughtId,
+                    { $push: { reactions: { reactionBody, username } } },
+                    { new: true, runValidators: true, context: 'query' }
+                );
+
+                if (!updatedThought) {
+                    return res.status(404).json({ message: 'No thought with this id!' });
+                }
+
+                res.json(updatedThought);
+            } catch (err) {
+                console.error(err);
+                res.status(500).json({ error: 'An error occurred while trying to add a reaction', details: err.message });
+            }
+        },
+        removeReaction : async (req, res) => {
+            try {
+                const updatedThought = await Thought.findByIdAndUpdate(
+                    req.params.thoughtId,
+                    { $pull: { reactions: { reactionId: req.params.reactionId } } },
+                    { new: true, useFindAndModify: false }
+                );
+
+                if (!updatedThought) {
+                    return res.status(404).json({ message: 'No thought with this id!' });
+                }
+
+                res.json(updatedThought);
+            } catch (err) {
+                console.error(err);
+                res.status(500).json({ error: 'An error occurred while trying to remove a reaction', details: err.message });
+            }
+        },
 
 };
 

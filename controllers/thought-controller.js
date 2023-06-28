@@ -56,6 +56,38 @@ const userController = {
         }
       },
 
+      getThoughtById: async (req, res) => {
+        try {
+            const dbThoughtData = await Thought.findById(req.params.id);
+
+            if (!dbThoughtData) {
+                return res.status(404).json({ message: 'No thought with this id!' });
+            }
+
+            res.json(dbThoughtData);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'An error occurred while trying to get a thought by id', details: err.message });
+        }
+
+        },
+
+        deleteThought: async (req, res) => {
+            try {
+                const dbThoughtData = await Thought.findByIdAndDelete(req.params.id);
+                if (!dbThoughtData) {
+                    return res.status(404).json({ message: 'No thought with this id!' });
+                    return;
+                }
+                res.send(`Thought ${req.params.id} deleted!`);
+            } catch (err) {
+                console.error(err);
+                res.status(500).json({ error: 'An error occurred while trying to delete a thought', details: err.message });
+            }
+
+        },
+
+
 };
 
 

@@ -95,16 +95,23 @@ const userController = {
             res.status(500).json({ error: 'An error occurred while trying to add a friend', details: err.message });
         }
     },
+
     removeFriend: async (req, res) => {
         try {
             const dbUserData = await User.findById(req.params.id);
+            if (!dbUserData) {
+                res.status(404).json({ message: 'No user found with this id!' });
+                return;
+            }
 
-
-
-
-
-    ////     .post(addFriend)
-//     .delete(removeFriend);
+            dbUserData.friends.pull(req.params.friendId);
+            dbUserData.save();
+            res.json(dbUserData);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'An error occurred while trying to remove a friend', details: err.message });
+        }
+    }
 };
 
 

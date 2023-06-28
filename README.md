@@ -14,6 +14,9 @@
 
   ## Description
   This project was to help us learn how to use a NoSQL database (mongoDB) by building the backend for common elements in a social network API.
+
+  ## Demo
+  [![Demo Video](/assets/img/preview.png)](#)
   ## Installation
   Once the repo is cloned, type NPM install to install all dependencies.
   ## Usage
@@ -33,5 +36,3 @@
   n/a
   ## Credits
   n/a
-
-

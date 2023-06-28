@@ -1,5 +1,5 @@
 const User = require('../models/User');
-
+const Thought = require('../models/Thought');
 const userController = {
 
     getAllUsers: async (req, res) => {
@@ -68,10 +68,13 @@ const userController = {
                 return;
             }
 
-            res.send(`${dbUserData.username} deleted successfully!`);
+            // After deleting the user, delete their thoughts
+            await Thought.deleteMany({ userId: req.params.id });
+
+            res.send(`${dbUserData.username} and associated thoughts deleted successfully!`);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ error: 'An error occurred while trying to delete the user', details: err.message });
+            res.status(500).json({ error: 'An error occurred while trying to delete the user and associated thoughts', details: err.message });
         }
     },
 

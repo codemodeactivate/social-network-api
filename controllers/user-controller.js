@@ -73,8 +73,38 @@ const userController = {
             console.error(err);
             res.status(500).json({ error: 'An error occurred while trying to delete the user', details: err.message });
         }
-    }
+    },
 
+    addFriend: async (req, res) => {
+        try {
+
+            const dbUserData = await User.findById(req.params.id);
+            // console.log('User ID:', req.params.id);
+            // console.log('Friend ID:', req.params.friendId);
+            if (!dbUserData) {
+                res.status(404).json({ message: 'No user found with this id!' });
+                return;
+            }
+
+            dbUserData.friends.push(req.params.friendId);
+            dbUserData.save();
+
+            res.json(dbUserData);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'An error occurred while trying to add a friend', details: err.message });
+        }
+    },
+    removeFriend: async (req, res) => {
+        try {
+            const dbUserData = await User.findById(req.params.id);
+
+
+
+
+
+    ////     .post(addFriend)
+//     .delete(removeFriend);
 };
 
 

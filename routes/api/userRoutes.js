@@ -23,10 +23,10 @@ const {
     .delete(deleteUser);
 
 
-// router
-//     .route('/:userId/friends/:friendId')
-//     .post(addFriend)
-//     .delete(removeFriend);
+ router
+     .route('/:id/friends/:friendId')
+     .post(addFriend)
+     .delete(removeFriend);
 
 
 
